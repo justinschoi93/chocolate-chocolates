@@ -1,14 +1,37 @@
 const mongoose = require('mongoose');
+require('dotenv').config({path: '/config/.env.local'});
+console.log('Current working directory:', process.cwd());
 
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    await mongoose.connection.db.admin().command({ ping: 1 });
-    console.log("MongoDB connected");
-  } catch (err) {
-    console.error("Failed to connect to MongoDB", err);
-    process.exit(1); // Exit process with failure
+const MONGO_URI = process.env.MONGO_URI;
+console.log(process.env.MONGO_URI);
+
+if (!MONGO_URI) {
+  throw new Error('Please define the MONGO_URI environment variable inside .env.local');
+}
+
+/**
+ * Global is used here to maintain a cached connection across hot reloads
+ * in development. This prevents connections growing exponentially
+ * during API Route usage.
+ */
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
+}
+
+async function dbConnect() {
+  if (cached.conn) {
+    return cached.conn;
   }
-};
 
-module.exports = connectDB;
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGO_URI, MONGO_OPTIONS).then((mongoose) => {
+      return mongoose;
+    });
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+
+module.exports = dbConnect;

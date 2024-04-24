@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json()); // for parsing application/json
-app.use(authMiddleware); // runs api requests through authMiddleware
+app.use(authMiddleware); // runs api requests through authMiddleware 
 app.use('/', router);
 
 connectDB();

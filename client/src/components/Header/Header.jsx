@@ -2,7 +2,7 @@ import LoginButton from "../Authenticator/LoginButton";
 import LogoutButton from "../Authenticator/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import chocolateLogo from '../../../public/chocolate.svg'
-import 'header.css';
+import './header.css';
 
 
 const Header = () => {
@@ -13,7 +13,7 @@ const Header = () => {
             <div className="logo__container">
                 <img src={chocolateLogo} alt="chocolate_logo" className="logo__img" />
             </div>
-            <h1 className="header__title">Chocolate Chocolates</h1>
+            <h5 className="header__title">Chocolate Chocolates</h5>
             <div className="auth__container">
                 {
                     isAuthenticated ? 

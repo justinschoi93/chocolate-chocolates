@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Auth0Provider
     domain="dev-rctjvozwd0neg2cg.us.auth0.com"
-    clientId="4x0NQbBRFKuz8vbDyMkJIydipT2VHWzZ"
+    clientId="zYq7NBCQ7rcO46C8xwlwPMAxoMzjRyk1"
     authorizationParams={{
       redirect_uri: "http://localhost:5173"
     }}

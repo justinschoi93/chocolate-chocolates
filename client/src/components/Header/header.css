@@ -1,17 +1,66 @@
-h1 {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+@font-face {
+    font-family: 'KindRegards'; /* You can choose any name */
+    src: url('../../assets/KindRegards-x3285.otf'); /* Replace with the actual path to your .otf file */
+    font-style: normal;
 }
 
 .header__container {
+    height: 50px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    box-sizing: border-box
+}
+
+.header__container .header__title {
+    font-family: 'KindRegards', sans-serif;
+    font-weight: bold;
+    font-size: 3em
 }
 
 .logo__container {
-    width: 50px;
+    height: 100%; /* fill the height of the header */
+    width: auto; /* make the width equal to the height */
 }
 
 .logo__container img {
+    height: 100%; /* fill the height of the container */
+    width: 100%; /* make the width equal to the height */
+    object-fit: cover; /* or 'contain' if you want the entire image to be visible */
     background-color: red;
 }
+
+.auth__container {
+    height: 100%;
+}
+
+.auth__container div{
+    display: flex;
+    height: auto;
+}
+
+.user {
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user div {
+    height: 100%;
+}
+
+.user div img {
+    width: auto;
+    height: 100%; 
+    object-fit: cover;
+}
+
+.user div h2,
+.user div h2+p  {
+    display: none;
+}
+
+
+
+
+

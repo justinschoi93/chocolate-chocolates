@@ -19,7 +19,7 @@ function App() {
         isAuthenticated ? 
         <div className="isAuthenticated">
           <div className="user"></div>
-          <Profile />
+          
           <Home/>
         </div>      
         : 
